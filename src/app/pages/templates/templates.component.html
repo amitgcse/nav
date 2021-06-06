@@ -1,0 +1,50 @@
+
+<div class="row">
+    <!-- <ngb-accordion class="col-sm-2" [closeOthers]="true" activeIds="text-panel-0">
+        <ngb-panel  *ngFor="let item of items;let i = index" id="text-panel-{{i}}">
+    
+          <ng-template ngbPanelHeader>
+              <button class="btn btn-acc-title" ngbPanelToggle>
+                {{item.displayName}}
+              </button>
+          </ng-template>
+
+            <ng-template ngbPanelContent>
+                <div *ngFor="let subItem of item.subItems;let j = index" class="text-thumb thumb-{{j}}" >
+                    <div class="inner" (click)="selectedCategory=subItem.displayName">
+                        <button class="btn btn-acc-title">
+                            {{ subItem.displayName }}
+                        </button>
+                    </div>
+                </div>
+              </ng-template>
+
+        </ngb-panel>
+      </ngb-accordion> -->
+    
+<div class="col-sm-2">
+    <ul>
+    <li *ngFor="let item of items;">
+        <b>{{item.displayName}}</b>
+        <ul>
+            <li *ngFor="let subItem of item.subItems;" (click)="selectedCategory=subItem.displayName">
+                <b>{{subItem.displayName}}</b>
+        </ul>
+    </li>
+    </ul> 
+</div> 
+
+    <div class="col-sm-10" [ngSwitch]="selectedCategory">
+        <div *ngFor="let item of items">
+            <div *ngFor="let subItem of item.subItems">
+                <div *ngSwitchCase="subItem.displayName">
+                    <h3>{{ subItem.displayName }}</h3>
+                    <ul>
+                        <li *ngFor="let img of subItem.images">{{img}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
